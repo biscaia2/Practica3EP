@@ -12,7 +12,6 @@ public class MemberAccreditationDoc extends PDFDocument {
     private final AccredNumb numAffil;
 
     public MemberAccreditationDoc (Nif nif, AccredNumb nAff) throws nullCodeException, nonValidNifException {
-        super();
         this.nif = nif;
         this.numAffil = nAff;
     }

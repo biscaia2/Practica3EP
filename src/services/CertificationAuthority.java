@@ -3,6 +3,7 @@ package services;
 import data.Nif;
 import data.PINcode;
 import data.Password;
+import exceptions.*;
 
 import java.net.ConnectException;
 import java.util.Date;
@@ -20,20 +21,6 @@ public interface CertificationAuthority {
             NotValidCredException, AnyMobileRegisteredException, ConnectException;
 
 
-    //excepcions
-    class NifNotRegisteredException extends Exception {
-    }
 
-    class IncorrectValDateException extends Exception {
-    }
-
-    class AnyMobileRegisteredException extends Exception {
-    }
-
-    class NotValidPINException extends Exception {
-    }
-
-    class NotValidCredException extends Exception {
-    }
 }
 

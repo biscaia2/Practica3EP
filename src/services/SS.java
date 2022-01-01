@@ -1,6 +1,7 @@
 package services;
 
 import data.Nif;
+import exceptions.NotAffiliatedException;
 import publicadministration.LaboralLifeDoc;
 import publicadministration.MemberAccreditationDoc;
 
@@ -18,7 +19,5 @@ public interface SS {
     MemberAccreditationDoc getMembAccred (Nif nif) throws NotAffiliatedException,
             ConnectException;
 
-    //excepcions
-    class NotAffiliatedException extends Exception {
-    }
+
 }

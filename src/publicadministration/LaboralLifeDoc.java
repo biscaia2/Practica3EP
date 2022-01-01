@@ -9,7 +9,6 @@ public class LaboralLifeDoc extends PDFDocument { // Represents the laboral life
     private QuotePeriodsColl quotePds;
 
     public LaboralLifeDoc (Nif nif, QuotePeriodsColl qtP) throws nullCodeException, nonValidNifException {
-        super();
         this.nif = nif;
         this.quotePds = qtP;
     }

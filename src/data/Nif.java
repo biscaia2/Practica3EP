@@ -5,6 +5,7 @@ import exceptions.nullCodeException;
 
 /**
  * Essential data classes
+ * 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
  */
 final public class Nif {
     // The tax identification number in the Spanish state.
