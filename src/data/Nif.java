@@ -1,4 +1,8 @@
 package data;
+
+import exceptions.nonValidNifException;
+import exceptions.nullCodeException;
+
 /**
  * Essential data classes
  */
@@ -13,7 +17,6 @@ final public class Nif {
         if(!nif.matches("[+-]?\\d*(\\.\\d+)?")) {
             throw new nonValidNifException("invalid nif");
         }
-
         return nif;
     }
 
@@ -31,17 +34,5 @@ final public class Nif {
     @Override
     public String toString () {
         return "Nif{" + "nif ciudadano='" + nif + '\'' + '}';
-    }
-
-    public static class nullCodeException extends Throwable {
-        public nullCodeException(String null_nif) {
-            super(null_nif);
-        }
-    }
-
-    public static class nonValidNifException extends Throwable {
-        public nonValidNifException(String invalid_nif) {
-            super(invalid_nif);
-        }
     }
 }

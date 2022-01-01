@@ -1,4 +1,8 @@
 package data;
+
+import exceptions.nonValidNifException;
+import exceptions.nullCodeException;
+
 /**
  * Essential data classes
  */
@@ -6,7 +10,15 @@ final public class AccredNumb {
 
     private final String accnum;
     public AccredNumb (String numb) { this.accnum = numb; }
-    public String getAccredNumb () { return accnum; }
+    public String getAccredNumb () throws nullCodeException, nonValidNifException {
+        if (accnum == null) {
+            throw new nullCodeException("null nif");
+        }
+        if(!accnum.matches("[+-]?\\d*(\\.\\d+)?")) {
+            throw new nonValidNifException("invalid nif");
+        }
+        return accnum;
+    }
 
     @Override
     public boolean equals (Object o) {

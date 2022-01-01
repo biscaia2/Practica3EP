@@ -1,14 +1,6 @@
 package publicadministration;
 
-import data.DocPath;
 import data.Nif;
-import data.PINcode;
-import data.Password;
-import services.CertificationAuthority;
-import services.SS;
-
-import java.net.ConnectException;
-import java.util.Date;
 
 public class UnifiedPlatform {
     // The class members

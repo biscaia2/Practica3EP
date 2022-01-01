@@ -2,13 +2,17 @@ package publicadministration;
 
 import data.AccredNumb;
 import data.Nif;
+import exceptions.nonValidNifException;
+import exceptions.nullCodeException;
+
 
 public class MemberAccreditationDoc extends PDFDocument {
     // Represents the member accreditation document
     private final Nif nif;
     private final AccredNumb numAffil;
 
-    public MemberAccreditationDoc (Nif nif, AccredNumb nAff){
+    public MemberAccreditationDoc (Nif nif, AccredNumb nAff) throws nullCodeException, nonValidNifException {
+        super();
         this.nif = nif;
         this.numAffil = nAff;
     }
