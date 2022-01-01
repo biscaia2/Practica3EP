@@ -13,7 +13,7 @@ import java.util.Date;
 public class UnifiedPlatform {
     // The class members
     // Input events
-    public void processSearcher () {};
+    /*public void processSearcher () {};
 
     public void enterKeyWords (String keyWord) {} throws
     AnyKeyWordProcedureException;
@@ -57,5 +57,5 @@ public class UnifiedPlatform {
 
     private void downloadDocument (DocPath path) {} throws BadPathException;
 
-    // Possibly more operations
+    // Possibly more operations*/
 }

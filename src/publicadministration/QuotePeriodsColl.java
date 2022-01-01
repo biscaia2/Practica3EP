@@ -9,6 +9,6 @@ public class QuotePeriodsColl { // Represents the total quote periods known as a
 
     public void addQuotePeriod (QuotePeriod qPd){ } // Adds a quote period, always respecting the sorting by date, from oldest to later in time
 
-    public String toString () {} // Converts to String
+    public String toString () {return "";} // Converts to String
 }
 

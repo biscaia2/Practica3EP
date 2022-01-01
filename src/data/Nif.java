@@ -5,8 +5,17 @@ package data;
 final public class Nif {
     // The tax identification number in the Spanish state.
     private final String nif;
-    public Nif (String code) throws nullCodeException, nonValidNifException { this.nif = code; }
-    public String getNif () { return nif; }
+    public Nif (String code)  { this.nif = code; }
+    public String getNif () throws nullCodeException, nonValidNifException {
+        if (nif == null) {
+            throw new nullCodeException("null nif");
+        }
+        if(!nif.matches("[+-]?\\d*(\\.\\d+)?")) {
+            throw new nonValidNifException("invalid nif");
+        }
+
+        return nif;
+    }
 
     @Override
     public boolean equals (Object o) {
@@ -24,12 +33,15 @@ final public class Nif {
         return "Nif{" + "nif ciudadano='" + nif + '\'' + '}';
     }
 
-
-
-    private class nonValidNifException extends Exception {
-
+    public static class nullCodeException extends Throwable {
+        public nullCodeException(String null_nif) {
+            super(null_nif);
+        }
     }
 
-    private class nullCodeException extends Exception {
+    public static class nonValidNifException extends Throwable {
+        public nonValidNifException(String invalid_nif) {
+            super(invalid_nif);
+        }
     }
 }

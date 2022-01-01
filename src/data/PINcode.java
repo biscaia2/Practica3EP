@@ -5,7 +5,7 @@ package data;
 final public class PINcode {
 
     private final String pincode;
-    public PINcode(String pin) throws { this.pincode = pin; }
+    public PINcode(String pin) { this.pincode = pin; }
     public String getPINcode () { return pincode; }
 
     @Override
