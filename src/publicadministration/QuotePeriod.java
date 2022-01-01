@@ -3,8 +3,8 @@ package publicadministration;
 import java.util.Date;
 
 public class QuotePeriod { // Represents a quote period as a registered worker
-    private Date initDay;
-    private int numDays;
+    private final Date initDay;
+    private final int numDays;
 
     public QuotePeriod (Date date, int ndays){
         this.initDay = date;
