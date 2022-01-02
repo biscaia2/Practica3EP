@@ -10,13 +10,18 @@ import java.net.ConnectException;
 import java.util.Date;
 
 public class UnifiedPlatform {
+
+    public UnifiedPlatform() {
+
+    }
     // The class members
     // Input events
     public void processSearcher () {};
 
     public void enterKeyWords (String keyWord) throws AnyKeyWordProcedureException {}
 
-    public void selectSS () {};
+    public void selectSS () {
+    }
 
     public void selectCitizens () {};
 

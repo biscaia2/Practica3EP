@@ -1,3 +1,5 @@
+package dataTests;
+
 import data.DocPath;
 
 import exceptions.nonValidNifException;

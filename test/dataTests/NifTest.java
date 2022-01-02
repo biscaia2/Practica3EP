@@ -1,3 +1,5 @@
+package dataTests;
+
 import data.Nif;
 
 import exceptions.nonValidNifException;

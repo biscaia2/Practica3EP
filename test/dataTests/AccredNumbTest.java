@@ -1,3 +1,5 @@
+package dataTests;
+
 import data.AccredNumb;
 
 import exceptions.nonValidNifException;
