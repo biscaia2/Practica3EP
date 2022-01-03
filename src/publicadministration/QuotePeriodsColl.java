@@ -1,5 +1,8 @@
 package publicadministration;
 
+import exceptions.nonValidNifException;
+import exceptions.nullCodeException;
+
 import java.util.ArrayList;
 import java.util.*;
 import java.util.Collection;
@@ -25,14 +28,25 @@ public class QuotePeriodsColl { // Represents the total quote periods known as a
         this.quoteList = orderQuoteList(quoteList);
     } // Adds a quote period, always respecting the sorting by date, from oldest to later in time
 
-    private ArrayList<QuotePeriod> orderQuoteList(ArrayList<QuotePeriod> quoteList){
-        quoteList.sort((d1,d2) -> d1.getDate().compareTo(d2.getDate()));
+    public ArrayList<QuotePeriod> orderQuoteList(ArrayList<QuotePeriod> quoteList){
+        quoteList.sort((d1,d2) -> {
+            try {
+                return d1.getDate().compareTo(d2.getDate());
+            } catch (nullCodeException | nonValidNifException e) {
+                e.printStackTrace();
+            }
+            return 0;
+        });
         return quoteList;
     }
     public String toString () {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for(int i = 0; i < quoteList.size() - 1; i++){
-            result += "Data" + quoteList.get(i).getDate() + "\n";
+            try {
+                result.append("Data").append(quoteList.get(i).getDate()).append("\n");
+            } catch (nullCodeException | nonValidNifException e) {
+                e.printStackTrace();
+            }
         }
         return "QuoteperiodColl{" + result +'\'' + '}';
 } // Converts to String
