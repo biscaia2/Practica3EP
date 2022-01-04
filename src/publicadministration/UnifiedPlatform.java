@@ -65,16 +65,16 @@ public class UnifiedPlatform {
 
     public void enterNIFPINobt (Nif nif, Date valDate) throws
             NifNotRegisteredException, IncorrectValDateException,
-            AnyMobileRegisteredException, ConnectException, nullStringException, nonValidStringException {
+            AnyMobileRegisteredException, ConnectException {
         System.out.println("Selecciona mètode autenticacio: \n-Clau PIN: 0\n-Clau Permanent: 1\n-Certificat Digital: 2\n");
         System.out.println("Mètode identificació Clau PIN seleccionat\n");
-        if (!nif.equals(new Nif("1234567")) || !nif.equals(new Nif("1234567"))) {
+        if (!Objects.equals(nif, new Nif("1234567")) && !Objects.equals(nif, new Nif("0000000"))) {
             throw new NifNotRegisteredException();
         }
         if (valDate.before(new Date(1930, Calendar.JANUARY, 1)) || valDate.after(new Date(2021, Calendar.DECEMBER, 31)) || nif == null) {
             throw  new IncorrectValDateException();
         }
-        if (nif.equals(new Nif("0000000"))) {
+        if (Objects.equals(nif, new Nif("0000000"))) {
             throw new AnyMobileRegisteredException();
         }
         boolean internetConnection = true;
@@ -85,10 +85,10 @@ public class UnifiedPlatform {
     }
 
     public void enterPIN (PINcode pin) throws NotValidPINException,
-    NotAffiliatedException, ConnectException {
+            NotAffiliatedException, ConnectException, nullStringException, nonValidStringException {
         System.out.println("PIN rebut 1234567");
         System.out.println("Introdueix el PIN rebut via SMS\n");
-        String PIN = System.console().readLine();
+        String PIN = pin.getPINcode();
         if (!Objects.equals(PIN, "1234567")) {
             throw new NotValidPINException();
         }
