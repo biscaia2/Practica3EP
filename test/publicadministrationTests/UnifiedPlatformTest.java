@@ -13,10 +13,8 @@ import java.util.Date;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UnifiedPlatformTest {
-    String correctProcedure;
     String incorrectProcedure;
 
-    String correctAAPP;
     String incorrectAAPP;
 
     UnifiedPlatform unifiedPlatform;
