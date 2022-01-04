@@ -1,22 +1,22 @@
 package data;
 
-import exceptions.nonValidNifException;
-import exceptions.nullCodeException;
+import exceptions.nonValidStringException;
+import exceptions.nullStringException;
 
 /**
  * Essential data classes
- * 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
+ *  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
  */
 final public class Nif {
     // The tax identification number in the Spanish state.
     private final String nif;
     public Nif (String code)  { this.nif = code; }
-    public String getNif () throws nullCodeException, nonValidNifException {
+    public String getNif () throws nullStringException, nonValidStringException {
         if (nif == null) {
-            throw new nullCodeException("null nif");
+            throw new nullStringException("null nif");
         }
         if(!nif.matches("[+-]?\\d*(\\.\\d+)?")) {
-            throw new nonValidNifException("invalid nif");
+            throw new nonValidStringException("invalid nif");
         }
         return nif;
     }

@@ -1,8 +1,8 @@
 package publicadministration;
 
 import data.DocPath;
-import exceptions.nonValidNifException;
-import exceptions.nullCodeException;
+import exceptions.nonValidStringException;
+import exceptions.nullStringException;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,7 +14,7 @@ public class PDFDocument { // Represents a PDF document
     private final DocPath path;
     private final File file;
 
-    public PDFDocument () throws nullCodeException, nonValidNifException {
+    public PDFDocument () throws nullStringException, nonValidStringException {
         this.creatDate = new Date(2021, Calendar.DECEMBER,31);
         this.path = new DocPath("/Practica3EP");
         this.file = new File(path.getDocPath());

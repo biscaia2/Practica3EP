@@ -29,8 +29,8 @@ public class UnifiedPlatform {
         if (!Objects.equals(keyWord, "Informe de vida laboral") && !Objects.equals(keyWord, "Acreditacio numero afiliat SS")) {
             throw new AnyKeyWordProcedureException("paraula invalida");
         }
-        System.out.println("Has buscat la paraula " + keyWord);
-        System.out.println("Obrint AAPP ");
+        System.out.println("Has buscat la paraula " + keyWord + "\n");
+        System.out.println("Obrint AAPP corresponent\n");
     }
 
     public void selectSS () {
@@ -63,12 +63,12 @@ public class UnifiedPlatform {
         }
     }
 
-    public void enterNIFPINobt (Nif nif, Date valDate)  throws
-    NifNotRegisteredException, IncorrectValDateException,
-    AnyMobileRegisteredException, ConnectException {
+    public void enterNIFPINobt (Nif nif, Date valDate) throws
+            NifNotRegisteredException, IncorrectValDateException,
+            AnyMobileRegisteredException, ConnectException, nullStringException, nonValidStringException {
         System.out.println("Selecciona mètode autenticacio: \n-Clau PIN: 0\n-Clau Permanent: 1\n-Certificat Digital: 2\n");
-        String option = System.console().readLine();
-        if (!Objects.equals(option, "0")) {
+        System.out.println("Mètode identificació Clau PIN seleccionat\n");
+        if (!nif.equals(new Nif("1234567")) || !nif.equals(new Nif("1234567"))) {
             throw new NifNotRegisteredException();
         }
         if (valDate.before(new Date(1930, Calendar.JANUARY, 1)) || valDate.after(new Date(2021, Calendar.DECEMBER, 31)) || nif == null) {

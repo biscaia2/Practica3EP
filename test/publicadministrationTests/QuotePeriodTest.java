@@ -1,7 +1,7 @@
 package publicadministrationTests;
 
-import exceptions.nonValidNifException;
-import exceptions.nullCodeException;
+import exceptions.nonValidStringException;
+import exceptions.nullStringException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import publicadministration.QuotePeriod;
@@ -27,16 +27,16 @@ public class QuotePeriodTest {
 
     @Test
     void checkNullQuotePeriod() {
-        Throwable exception = assertThrows(nullCodeException.class, () -> {nullPeriod.getDate();});
+        Throwable exception = assertThrows(nullStringException.class, () -> {nullPeriod.getDate();});
     }
 
     @Test
     void checkWrongQuotePeriod() {
-        Throwable exception = assertThrows(nonValidNifException.class, () -> {wrongPeriod.getDate();});
+        Throwable exception = assertThrows(nonValidStringException.class, () -> {wrongPeriod.getDate();});
     }
 
     @Test
-    void wellCreatedQuotePeriod() throws nullCodeException, nonValidNifException {
+    void wellCreatedQuotePeriod() throws nullStringException, nonValidStringException {
         assertEquals(correctPeriod.getDate(), new Date(2003, Calendar.DECEMBER, 12));
     }
 }

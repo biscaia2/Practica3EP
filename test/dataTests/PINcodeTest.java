@@ -1,10 +1,9 @@
 package dataTests;
 
-import data.Nif;
 import data.PINcode;
 
-import exceptions.nonValidNifException;
-import exceptions.nullCodeException;
+import exceptions.nonValidStringException;
+import exceptions.nullStringException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,20 +23,20 @@ public class PINcodeTest {
 
     @Test
     void checkNullPINCode() {
-        Throwable exception = assertThrows(nullCodeException.class, () -> {
+        Throwable exception = assertThrows(nullStringException.class, () -> {
             nullPIN.getPINcode();
         });
     }
 
     @Test
     void checkWrongPINCode() {
-        Throwable exception = assertThrows(nonValidNifException.class, () -> {
+        Throwable exception = assertThrows(nonValidStringException.class, () -> {
             wrongPIN.getPINcode();
         });
     }
 
     @Test
-    void wellCreatedPINCode() throws nullCodeException, nonValidNifException {
+    void wellCreatedPINCode() throws nullStringException, nonValidStringException {
         assertEquals(correctPIN.getPINcode(), "012345");
     }
 }

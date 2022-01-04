@@ -2,8 +2,8 @@ package dataTests;
 
 import data.Nif;
 
-import exceptions.nonValidNifException;
-import exceptions.nullCodeException;
+import exceptions.nonValidStringException;
+import exceptions.nullStringException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -23,16 +23,16 @@ public class NifTest {
 
     @Test
     void checkNullNif() {
-        Throwable exception = assertThrows(nullCodeException.class, () -> {nullNif.getNif();});
+        Throwable exception = assertThrows(nullStringException.class, () -> {nullNif.getNif();});
     }
 
     @Test
     void checkWrongNif() {
-        Throwable exception = assertThrows(nonValidNifException.class, () -> {wrongNif.getNif();});
+        Throwable exception = assertThrows(nonValidStringException.class, () -> {wrongNif.getNif();});
     }
 
     @Test
-    void wellCreatedNif() throws nullCodeException, nonValidNifException {
+    void wellCreatedNif() throws nullStringException, nonValidStringException {
         assertEquals(correctNif.getNif(), "012345");
     }
 }

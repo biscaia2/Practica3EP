@@ -1,7 +1,7 @@
 package data;
 
-import exceptions.nonValidNifException;
-import exceptions.nullCodeException;
+import exceptions.nonValidStringException;
+import exceptions.nullStringException;
 
 /**
  * Essential data classes
@@ -10,12 +10,12 @@ final public class DocPath {
 
     private final String docpath;
     public DocPath (String path) { this.docpath = path; }
-    public String getDocPath () throws nullCodeException, nonValidNifException {
+    public String getDocPath () throws nullStringException, nonValidStringException {
         if (docpath == null) {
-            throw new nullCodeException("null nif");
+            throw new nullStringException("null nif");
         }
         if(!docpath.matches("[+-]?\\d*(\\.\\d+)?")) {
-            throw new nonValidNifException("invalid nif");
+            throw new nonValidStringException("invalid nif");
         }
         return docpath;
     }

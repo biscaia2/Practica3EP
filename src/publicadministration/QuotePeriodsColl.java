@@ -1,13 +1,9 @@
 package publicadministration;
 
-import exceptions.nonValidNifException;
-import exceptions.nullCodeException;
+import exceptions.nonValidStringException;
+import exceptions.nullStringException;
 
 import java.util.ArrayList;
-import java.util.*;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class QuotePeriodsColl { // Represents the total quote periods known as a registered worker
     // Its components, that is, the set of quote periods
@@ -32,7 +28,7 @@ public class QuotePeriodsColl { // Represents the total quote periods known as a
         quoteList.sort((d1,d2) -> {
             try {
                 return d1.getDate().compareTo(d2.getDate());
-            } catch (nullCodeException | nonValidNifException e) {
+            } catch (nullStringException | nonValidStringException e) {
                 e.printStackTrace();
             }
             return 0;
@@ -44,7 +40,7 @@ public class QuotePeriodsColl { // Represents the total quote periods known as a
         for(int i = 0; i < quoteList.size() - 1; i++){
             try {
                 result.append("Data").append(quoteList.get(i).getDate()).append("\n");
-            } catch (nullCodeException | nonValidNifException e) {
+            } catch (nullStringException | nonValidStringException e) {
                 e.printStackTrace();
             }
         }

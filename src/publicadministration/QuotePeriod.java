@@ -1,7 +1,7 @@
 package publicadministration;
 
-import exceptions.nonValidNifException;
-import exceptions.nullCodeException;
+import exceptions.nonValidStringException;
+import exceptions.nullStringException;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -16,12 +16,12 @@ public class QuotePeriod { // Represents a quote period as a registered worker
     }
 
     //getters
-    public Date getDate() throws nullCodeException, nonValidNifException {
+    public Date getDate() throws nullStringException, nonValidStringException {
         if (initDay == null) {
-            throw new nullCodeException("null date");
+            throw new nullStringException("null date");
         }
         if (initDay.before(new Date(1950, Calendar.JANUARY, 1)) || initDay.after(new Date(2021, Calendar.DECEMBER, 31))) {
-            throw new nonValidNifException("invalid date");
+            throw new nonValidStringException("invalid date");
         }
         return initDay;
     }

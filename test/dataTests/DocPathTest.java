@@ -2,8 +2,8 @@ package dataTests;
 
 import data.DocPath;
 
-import exceptions.nonValidNifException;
-import exceptions.nullCodeException;
+import exceptions.nonValidStringException;
+import exceptions.nullStringException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,20 +24,20 @@ public class DocPathTest {
 
     @Test
     void checkNullDocPath() {
-        Throwable exception = assertThrows(nullCodeException.class, () -> {
+        Throwable exception = assertThrows(nullStringException.class, () -> {
             nullDocPath.getDocPath();
         });
     }
 
     @Test
     void checkWrongDocPath() {
-        Throwable exception = assertThrows(nonValidNifException.class, () -> {
+        Throwable exception = assertThrows(nonValidStringException.class, () -> {
             wrongDocPath.getDocPath();
         });
     }
 
     @Test
-    void wellCreatedDocPath() throws nullCodeException, nonValidNifException {
+    void wellCreatedDocPath() throws nullStringException, nonValidStringException {
         assertEquals(correctDocPath.getDocPath(), "012345");
     }
 }

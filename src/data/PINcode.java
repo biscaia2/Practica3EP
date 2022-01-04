@@ -1,7 +1,7 @@
 package data;
 
-import exceptions.nonValidNifException;
-import exceptions.nullCodeException;
+import exceptions.nonValidStringException;
+import exceptions.nullStringException;
 
 /**
  * Essential data classes
@@ -10,12 +10,12 @@ final public class PINcode {
 
     private final String pincode;
     public PINcode(String pin) { this.pincode = pin; }
-    public String getPINcode () throws nullCodeException, nonValidNifException {
+    public String getPINcode () throws nullStringException, nonValidStringException {
         if (pincode == null) {
-            throw new nullCodeException("null pin");
+            throw new nullStringException("null pin");
         }
         if(!pincode.matches("[+-]?\\d*(\\.\\d+)?")) {
-            throw new nonValidNifException("invalid pin");
+            throw new nonValidStringException("invalid pin");
         }
         return pincode;
     }

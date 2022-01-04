@@ -2,8 +2,8 @@ package dataTests;
 
 import data.AccredNumb;
 
-import exceptions.nonValidNifException;
-import exceptions.nullCodeException;
+import exceptions.nonValidStringException;
+import exceptions.nullStringException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,20 +24,20 @@ public class AccredNumbTest {
 
     @Test
     void checkNullAccNum() {
-        Throwable exception = assertThrows(nullCodeException.class, () -> {
+        Throwable exception = assertThrows(nullStringException.class, () -> {
             nullAccNum.getAccredNumb();
         });
     }
 
     @Test
     void checkWrongAccNum() {
-        Throwable exception = assertThrows(nonValidNifException.class, () -> {
+        Throwable exception = assertThrows(nonValidStringException.class, () -> {
             wrongAccNum.getAccredNumb();
         });
     }
 
     @Test
-    void wellCreatedAccNum() throws nullCodeException, nonValidNifException {
+    void wellCreatedAccNum() throws nullStringException, nonValidStringException {
         assertEquals(correctAccNum.getAccredNumb(), "012345");
     }
 }
