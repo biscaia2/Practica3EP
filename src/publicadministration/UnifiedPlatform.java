@@ -1,17 +1,16 @@
 package publicadministration;
 
-import data.DocPath;
-import data.Nif;
-import data.PINcode;
-import data.Password;
+import data.*;
 import exceptions.*;
+import services.CertificationAuthority;
+import services.SS;
 
 import java.net.ConnectException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 
-public class UnifiedPlatform {
+public class UnifiedPlatform implements SS, CertificationAuthority {
     String unifiedPlatform;
 
 
@@ -33,7 +32,9 @@ public class UnifiedPlatform {
         System.out.println("Obrint AAPP corresponent\n");
     }
 
-    public void selectSS () {
+    public void selectSS () throws NotAffiliatedException, ConnectException {
+        getLaboralLife(new Nif("11234567"));
+        getMembAccred(new Nif("1234567"));
         System.out.println("Has entrat a la plataforma de la Seguretat Social\n");
     }
 
@@ -65,7 +66,7 @@ public class UnifiedPlatform {
 
     public void enterNIFPINobt (Nif nif, Date valDate) throws
             NifNotRegisteredException, IncorrectValDateException,
-            AnyMobileRegisteredException, ConnectException {
+            AnyMobileRegisteredException, ConnectException, NotValidPINException {
         System.out.println("Selecciona mètode autenticacio: \n-Clau PIN: 0\n-Clau Permanent: 1\n-Certificat Digital: 2\n");
         System.out.println("Mètode identificació Clau PIN seleccionat\n");
         if (!Objects.equals(nif, new Nif("1234567")) && !Objects.equals(nif, new Nif("0000000"))) {
@@ -81,7 +82,9 @@ public class UnifiedPlatform {
         if (!internetConnection) {
             throw new ConnectException();
         }
-        System.out.println("Dades introduides correctament\n PIN sol·licitat\n");
+        if(sendPIN(nif, valDate) && checkPIN(nif, new PINcode("1234567"))) {
+            System.out.println("Dades introduides correctament\n PIN sol·licitat\n");
+        }
     }
 
     public void enterPIN (PINcode pin) throws NotValidPINException,
@@ -135,6 +138,43 @@ public class UnifiedPlatform {
     PrintingException {}
 
     private void downloadDocument (DocPath path) throws BadPathException {}
+
+    @Override
+    public boolean sendPIN(Nif nif, Date date) throws NifNotRegisteredException, IncorrectValDateException, AnyMobileRegisteredException, ConnectException {
+        return true;
+    }
+
+    @Override
+    public boolean checkPIN(Nif nif, PINcode pin) throws NotValidPINException, ConnectException {
+        try {
+            return nif.getNif().equals(pin.getPINcode());
+        } catch (nullStringException | nonValidStringException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public LaboralLifeDoc getLaboralLife(Nif nif) throws NotAffiliatedException, ConnectException {
+        System.out.println("Generant pdf i informe de vida laboral\n");
+        try {
+            return new LaboralLifeDoc(nif, new QuotePeriodsColl());
+        } catch (nullStringException | nonValidStringException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public MemberAccreditationDoc getMembAccred(Nif nif) throws NotAffiliatedException, ConnectException {
+        System.out.println("Generant pdf i acreditació\n");
+        try {
+            return new MemberAccreditationDoc(nif, new AccredNumb("7654321"));
+        } catch (nullStringException | nonValidStringException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     // Possibly more operations
 }
